@@ -43,3 +43,5 @@
 /home/hermes/Documentos/Desenvolvimento/DotnetCore/ProAgil.Api/bin/Debug/netcoreapp3.1/runtimes/win8-arm/native/e_sqlite3.dll
 /home/hermes/Documentos/Desenvolvimento/DotnetCore/ProAgil.Api/obj/Debug/netcoreapp3.1/ProAgil.Api.csproj.CopyComplete
 /home/hermes/Documentos/Desenvolvimento/DotnetCore/ProAgil.Api/bin/Debug/netcoreapp3.1/Microsoft.EntityFrameworkCore.Design.dll
+/home/hermes/Documentos/Desenvolvimento/DotnetCore/ProAgil.Api/obj/Debug/netcoreapp3.1/ProAgil.Api.csproj.CoreCompileInputs.cache
+/home/hermes/Documentos/Desenvolvimento/DotnetCore/ProAgil.Api/obj/Debug/netcoreapp3.1/ProAgil.Api.genruntimeconfig.cache

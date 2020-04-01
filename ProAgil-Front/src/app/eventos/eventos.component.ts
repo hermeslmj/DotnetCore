@@ -10,7 +10,27 @@ export class EventosComponent implements OnInit {
 
   constructor(private http: HttpClient) { }
 
-  eventos: any;
+  _filtroLista: string = "";
+
+  get filtroLista(): string
+  {
+    return this._filtroLista
+  }
+
+  set filtroLista(v: string) {
+    this._filtroLista = v;
+    this.eventoFiltrados = (this._filtroLista) ? this.filtrarEventos(this.filtroLista) : this.eventos;
+  }
+
+
+
+  eventos: any = [];
+  eventoFiltrados: any = [];
+
+  imagemLargura = 50;
+  imagemMargem = 2;
+  mostrarImg = false;
+  
 
   ngOnInit() {
     this.getEventos();
@@ -18,11 +38,22 @@ export class EventosComponent implements OnInit {
 
   getEventos() { 
     this.http.get("http://localhost:5000/Evento").subscribe(
-      response => { this.eventos = response },
+      response => { this.eventos= this.eventoFiltrados = response },
       error => {
         console.error(error)
       }
     );
+  }
+
+  filtrarEventos(filtrarPor: any){
+    filtrarPor = filtrarPor.toLocaleLowerCase();
+    return this.eventos.filter(
+      x => x.tema.toLocaleLowerCase().indexOf(filtrarPor) !== -1
+    );
+  }
+
+  mostrarImagens(){
+    this.mostrarImg = !this.mostrarImg;
   }
 
 }
