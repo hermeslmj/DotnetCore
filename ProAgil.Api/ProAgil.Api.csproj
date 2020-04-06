@@ -12,5 +12,10 @@
     <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="2.2.0" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\ProAgil.Repository\ProAgil.Repository.csproj" />
+    <ProjectReference Include="..\ProAgil.Domain\ProAgil.Domain.csproj" />
+  </ItemGroup>
+
 
 </Project>

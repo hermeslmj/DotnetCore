@@ -1,0 +1,12 @@
+/home/hermes/Documentos/Desenvolvimento/DotnetCore/ProAgil.Repository/bin/Debug/netstandard2.0/ProAgil.Repository.deps.json
+/home/hermes/Documentos/Desenvolvimento/DotnetCore/ProAgil.Repository/bin/Debug/netstandard2.0/ProAgil.Repository.dll
+/home/hermes/Documentos/Desenvolvimento/DotnetCore/ProAgil.Repository/bin/Debug/netstandard2.0/ProAgil.Repository.pdb
+/home/hermes/Documentos/Desenvolvimento/DotnetCore/ProAgil.Repository/bin/Debug/netstandard2.0/ProAgil.Domain.dll
+/home/hermes/Documentos/Desenvolvimento/DotnetCore/ProAgil.Repository/bin/Debug/netstandard2.0/ProAgil.Domain.pdb
+/home/hermes/Documentos/Desenvolvimento/DotnetCore/ProAgil.Repository/obj/Debug/netstandard2.0/ProAgil.Repository.csprojAssemblyReference.cache
+/home/hermes/Documentos/Desenvolvimento/DotnetCore/ProAgil.Repository/obj/Debug/netstandard2.0/ProAgil.Repository.csproj.CoreCompileInputs.cache
+/home/hermes/Documentos/Desenvolvimento/DotnetCore/ProAgil.Repository/obj/Debug/netstandard2.0/ProAgil.Repository.AssemblyInfoInputs.cache
+/home/hermes/Documentos/Desenvolvimento/DotnetCore/ProAgil.Repository/obj/Debug/netstandard2.0/ProAgil.Repository.AssemblyInfo.cs
+/home/hermes/Documentos/Desenvolvimento/DotnetCore/ProAgil.Repository/obj/Debug/netstandard2.0/ProAgil.Repository.csproj.CopyComplete
+/home/hermes/Documentos/Desenvolvimento/DotnetCore/ProAgil.Repository/obj/Debug/netstandard2.0/ProAgil.Repository.dll
+/home/hermes/Documentos/Desenvolvimento/DotnetCore/ProAgil.Repository/obj/Debug/netstandard2.0/ProAgil.Repository.pdb
