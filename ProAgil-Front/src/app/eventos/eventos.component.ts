@@ -2,7 +2,11 @@ import { Component, OnInit, TemplateRef } from '@angular/core';
 import { eventoService } from '../services/evento.service';
 import { Evento } from '../models';
 import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
-
+import { FormGroup, Validators, FormBuilder } from '@angular/forms';
+import { defineLocale } from 'ngx-bootstrap/chronos';
+import { ptBrLocale } from 'ngx-bootstrap/locale';
+import { BsLocaleService } from 'ngx-bootstrap/datepicker';
+defineLocale('pt-br', ptBrLocale);
 @Component({
   selector: 'app-eventos',
   templateUrl: './eventos.component.html',
@@ -12,19 +16,27 @@ export class EventosComponent implements OnInit {
 
   constructor(
     private eventoService: eventoService
-    ,private modalService: BsModalService 
-  ) { }
+    , private modalService: BsModalService 
+    , private fb: FormBuilder
+    , private localeService: BsLocaleService
+  ) 
+  { 
+    this.localeService.use('pt-br');
+  }
 
   _filtroLista: string = "";
 
   eventos: Evento[];
   eventoFiltrados: Evento[];
+  evento: Evento;
 
   imagemLargura = 50;
   imagemMargem = 2;
   mostrarImg = false;
+  bodyDeletarEvento = "";
 
-  modalRef: BsModalRef;
+
+  registerForm: FormGroup;
 
   get filtroLista(): string
   {
@@ -37,12 +49,108 @@ export class EventosComponent implements OnInit {
     this.eventoFiltrados = (this._filtroLista) ? this.filtrarEventos(this.filtroLista) : this.eventos;
   }
 
-  openModal(template: TemplateRef<any>) {
-    this.modalRef = this.modalService.show(template);
-  }
 
   ngOnInit() {
+    this.validation();
     this.getEventos();
+  }
+
+
+  openModal(template: any) {
+    this.registerForm.reset();
+    template.show();
+  }
+
+  openEditContatoModal(template: any, eventoId: number) {
+    this.registerForm.reset();
+    this.eventoService.getEventoById(eventoId).subscribe
+    (
+      (evento) => {
+        this.registerForm.setValue({
+          "id": evento.id,
+          "tema": evento.tema,
+          "local": evento.local,
+          "dataEvento": evento.dataEvento,
+          "qtdPessoas": evento.qtdPessoas,
+          "imagemUrl": evento.imagemUrl,
+          "email": evento.email,
+          "telefone": evento.telefone
+        });
+        console.log(this.registerForm.value);
+        template.show();
+      },
+      err => {
+        console.log(err);
+      }
+    
+
+    )
+  }
+
+  salvarAlteracoes(template: any) {
+      if(this.registerForm.valid)
+      {
+        this.evento = Object.assign({}, this.registerForm.value);
+        if(this.registerForm.value.id == "")
+        {
+          
+          this.eventoService.postEvento(this.evento).subscribe(
+            (novoEvento: Evento) => {
+              console.log(novoEvento);
+              template.hide();
+              this.getEventos();
+            },
+            err => {
+              console.log(err);
+            }
+          );
+        }
+        else
+        {
+
+          this.eventoService.putEvento(this.registerForm.value.id, this.evento).subscribe(
+            (eventoEditado: Evento) => {
+              console.log(eventoEditado);
+              template.hide();
+              this.getEventos();
+            },
+            err => {
+              console.log(err);
+            }
+          );
+        }
+        
+      }
+  }
+
+  excluirEvento(evento: Evento, template: any) {
+    this.openModal(template);
+    this.evento = evento;
+    this.bodyDeletarEvento = `Tem certeza que deseja excluir o Evento: ${evento.tema}, Código: ${evento.tema}`;
+  }
+ 
+  confirmeDelete(template: any) {
+    this.eventoService.deleteEvento(this.evento.id).subscribe(
+      () => {
+          template.hide();
+          this.getEventos();
+        }, error => {
+          console.log(error);
+        }
+    );
+  }
+
+  validation() {
+    this.registerForm = this.fb.group({
+      id: [''],
+      local: ['', Validators.required],
+      dataEvento: ['', Validators.required],
+      qtdPessoas: ['', [Validators.required, Validators.max(120000)]],
+      imagemUrl: ['', Validators.required],
+      telefone: ['', Validators.required],
+      email: ['', [Validators.required, Validators.email]],
+      tema: ['', [Validators.required, Validators.minLength(4), Validators.maxLength(50)]]
+    });
   }
 
   getEventos() { 

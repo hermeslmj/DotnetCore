@@ -85,7 +85,7 @@ namespace ProAgil.Api.Controllers
             return BadRequest();            
         }
 
-        [HttpPut]
+        [HttpPut("{EventoId}")]
         public async Task<IActionResult> Put(int EventoId, Evento model)
         {
             try
@@ -112,8 +112,8 @@ namespace ProAgil.Api.Controllers
             return BadRequest();            
         }
 
-        [HttpDelete]
-        public async Task<IActionResult> Delete(int EventoId, Evento model)
+        [HttpDelete("{EventoId}")]
+        public async Task<IActionResult> Delete(int EventoId)
         {
             try
             {
@@ -124,7 +124,7 @@ namespace ProAgil.Api.Controllers
                     return NotFound();
                 }
 
-                this._repo.Delete(model);
+                this._repo.Delete(evento);
 
                 if(await this._repo.SaveChangesAsyns())
                 {
