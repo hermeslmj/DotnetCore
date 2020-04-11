@@ -1,21 +1,17 @@
 <Project Sdk="Microsoft.NET.Sdk.Web">
-
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
   </PropertyGroup>
-
   <ItemGroup>
     <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="2.2.0">
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
       <PrivateAssets>all</PrivateAssets>
     </PackageReference>
-    <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="2.2.0" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="2.2.0"/>
+    <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="4.0.0"/>
   </ItemGroup>
-
   <ItemGroup>
-    <ProjectReference Include="..\ProAgil.Repository\ProAgil.Repository.csproj" />
-    <ProjectReference Include="..\ProAgil.Domain\ProAgil.Domain.csproj" />
+    <ProjectReference Include="..\ProAgil.Repository\ProAgil.Repository.csproj"/>
+    <ProjectReference Include="..\ProAgil.Domain\ProAgil.Domain.csproj"/>
   </ItemGroup>
-
-
 </Project>

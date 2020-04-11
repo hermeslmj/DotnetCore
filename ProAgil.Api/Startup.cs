@@ -12,6 +12,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using AutoMapper;
 
 using ProAgil.Repository;
 
@@ -33,6 +34,9 @@ namespace ProAgil.Api
             {
                 x.UseSqlite(Configuration.GetConnectionString("DefaultConnection"));
             });
+
+            services.AddAutoMapper();
+
             services.AddScoped<IProAgilRepository, ProAgilRepository>();
             services.AddControllers();
             services.AddCors();
@@ -45,6 +49,7 @@ namespace ProAgil.Api
             {
                 app.UseDeveloperExceptionPage();
             }
+
 
             app.UseHttpsRedirection();
             app.UseCors(x => x.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader());
