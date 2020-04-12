@@ -4,6 +4,8 @@ namespace ProAgil.Api.Dtos
 {
     public class EventoDto
     {
+
+        public int Id { get; set; }
         public string Local { get; set; }
         public string DataEvento { get; set; }
         public string Tema { get; set; }

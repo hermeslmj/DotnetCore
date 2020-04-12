@@ -7,7 +7,11 @@ import { DatePipe } from '@angular/common';
 export class DateTimeFormatPipe extends DatePipe implements PipeTransform {
 
   transform(value: any, args?: any): any {
-    return super.transform(value, 'dd/MM/yyyy hh:mm:ss');
+    
+       return super.transform(value, 'dd/MM/yyyy hh:mm:ss');
+    
+    
+    
   }
 
 }

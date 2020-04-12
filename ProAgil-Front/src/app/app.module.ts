@@ -4,9 +4,14 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
+
 import { AppComponent } from './app.component';
-import { EventosComponent } from './eventos/eventos.component';
 import { NavComponent } from './nav/nav.component';
+import { EventosComponent } from './eventos/eventos.component';
+import { PalestrantesComponent } from './palestrantes/palestrantes.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
+import { ContatosComponent } from './contatos/contatos.component';
+import { BarraTituloComponent } from './shared/barra-titulo/barra-titulo.component';
 
 import { DateTimeFormatPipe } from '../app/helper/DateTimeFormat.pipe';
 
@@ -15,14 +20,20 @@ import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 import { ModalModule } from 'ngx-bootstrap/modal';
 import { TooltipModule } from 'ngx-bootstrap/tooltip';
 import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
+import { ToastrModule } from 'ngx-toastr';
+
 
 
 @NgModule({
    declarations: [
       AppComponent,
-      EventosComponent,
       NavComponent,
-      DateTimeFormatPipe
+      EventosComponent,
+      PalestrantesComponent,
+      DashboardComponent,
+      ContatosComponent,
+      DateTimeFormatPipe,
+      BarraTituloComponent
    ],
    imports: [
       BrowserModule,
@@ -34,7 +45,9 @@ import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
       ModalModule.forRoot(),
       TooltipModule.forRoot(),
       BsDatepickerModule.forRoot(),
-      ReactiveFormsModule
+      ReactiveFormsModule,
+      ToastrModule.forRoot()
+      
    ],
    providers: [],
    bootstrap: [

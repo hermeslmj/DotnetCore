@@ -1,3 +1,4 @@
+<app-barra-titulo [title]="titulo" ></app-barra-titulo>
 <div class="d-flex">
   <div action="" class="form-inline mr-auto">
     <div class="form-group mb-2">
@@ -42,7 +43,7 @@
       </td>
       <td>{{ e.id }}</td>
       <td>{{ e.local }}</td>
-      <td>{{ e.dataEvento | DateTimeFormat }}</td>
+      <td>{{ e.dataEvento}}</td>
       <td>{{ e.tema }}</td>
       <td>{{ e.qtdPessoas }}</td>
       <td>
@@ -120,6 +121,7 @@
               <label>Data e Hora</label>
               <input type="text" 
                 bsDatepicker
+                
                 [bsConfig]="{ dateInputFormat : 'DD/MM/YYYY hh:mm' }"
                 class="form-control" 
                 formControlName="dataEvento"
