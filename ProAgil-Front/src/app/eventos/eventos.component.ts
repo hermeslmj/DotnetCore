@@ -34,6 +34,7 @@ export class EventosComponent implements OnInit {
   eventos: Evento[];
   eventoFiltrados: Evento[];
   evento: Evento;
+  
 
   imagemLargura = 50;
   imagemMargem = 2;
@@ -42,6 +43,7 @@ export class EventosComponent implements OnInit {
 
 
   registerForm: FormGroup;
+  file: File;
 
   get filtroLista(): string
   {
@@ -77,11 +79,11 @@ export class EventosComponent implements OnInit {
           "local": evento.local,
           "dataEvento": evento.dataEvento,
           "qtdPessoas": evento.qtdPessoas,
-          "imagemUrl": evento.imagemUrl,
+          "imagemUrl": '',
           "email": evento.email,
           "telefone": evento.telefone
         });
-        console.log(this.registerForm.value);
+        
         template.show();
       },
       error => {
@@ -96,9 +98,11 @@ export class EventosComponent implements OnInit {
       if(this.registerForm.valid)
       {
         this.evento = Object.assign({}, this.registerForm.value);
-        if(this.registerForm.value.id == "")
+        if(this.registerForm.value.id == "" || this.registerForm.value.id == null)
         {
-          
+          this.evento.id = 0;
+          this.uploadImagem();
+
           this.eventoService.postEvento(this.evento).subscribe(
             (novoEvento: Evento) => {
               console.log(novoEvento);
@@ -113,6 +117,10 @@ export class EventosComponent implements OnInit {
         }
         else
         {
+          this.evento.id = this.registerForm.value.id;
+
+          this.uploadImagem();
+
 
           this.eventoService.putEvento(this.registerForm.value.id, this.evento).subscribe(
             (eventoEditado: Evento) => {
@@ -182,4 +190,17 @@ export class EventosComponent implements OnInit {
     this.mostrarImg = !this.mostrarImg;
   }
 
+  onFileChange(event){
+    const reader = new FileReader();
+    if (event.target.files && event.target.files.length > 0)
+    {
+        this.file = event.target.files;
+    }
+  }
+
+  uploadImagem(){
+    this.eventoService.postUpload(this.file).subscribe();
+    const nomeArquivo = this.evento.imagemUrl.split('\\', 3);
+    this.evento.imagemUrl = nomeArquivo[2];
+  }
 }

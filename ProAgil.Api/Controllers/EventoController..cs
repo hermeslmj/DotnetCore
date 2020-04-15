@@ -1,3 +1,4 @@
+using System.Net.Http.Headers;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using ProAgil.Repository;
@@ -7,6 +8,7 @@ using ProAgil.Domain;
 using AutoMapper;
 using ProAgil.Api.Dtos;
 using System.Collections.Generic;
+using System.IO;
 
 namespace ProAgil.Api.Controllers
 {
@@ -23,7 +25,35 @@ namespace ProAgil.Api.Controllers
             this._mapper = mapper;
         }
 
-        
+        [HttpPost("upload")]
+        public async Task<IActionResult> Upload()
+        {
+            try
+            {
+                var file = Request.Form.Files[0];
+                var folderName = Path.Combine("Resources","img");
+                var pathToSave = Path.Combine(Directory.GetCurrentDirectory(), folderName);
+
+                if(file.Length > 0)
+                {
+                    var filename = ContentDispositionHeaderValue.Parse(file.ContentDisposition).FileName;
+                    var fullPath = Path.Combine(pathToSave, filename.Replace("\""," ").Trim());
+                    using(var stream = new FileStream(fullPath, FileMode.Create))
+                    {
+                        file.CopyTo(stream);
+                    }
+                }
+
+                return Ok();
+            }
+            catch(System.Exception ex)
+            {
+                return this.StatusCode(StatusCodes.Status500InternalServerError, $"Erro ao efetuar upload { ex.Message }");
+            }
+
+            return BadRequest("Erro ao efetuar Upload");
+            
+        }
 
         [HttpGet]
         public async Task<IActionResult> Get()
