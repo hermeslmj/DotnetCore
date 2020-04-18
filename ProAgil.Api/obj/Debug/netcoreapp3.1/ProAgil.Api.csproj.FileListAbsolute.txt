@@ -51,3 +51,11 @@
 /home/hermes/Documentos/Desenvolvimento/DotnetCore/ProAgil.Api/obj/Debug/netcoreapp3.1/ProAgil.Api.genruntimeconfig.cache
 /home/hermes/Documentos/Desenvolvimento/DotnetCore/ProAgil.Api/bin/Debug/netcoreapp3.1/AutoMapper.dll
 /home/hermes/Documentos/Desenvolvimento/DotnetCore/ProAgil.Api/bin/Debug/netcoreapp3.1/AutoMapper.Extensions.Microsoft.DependencyInjection.dll
+/home/hermes/Documentos/Desenvolvimento/DotnetCore/ProAgil.Api/bin/Debug/netcoreapp3.1/Microsoft.AspNetCore.Identity.EntityFrameworkCore.dll
+/home/hermes/Documentos/Desenvolvimento/DotnetCore/ProAgil.Api/bin/Debug/netcoreapp3.1/Microsoft.AspNetCore.Authentication.JwtBearer.dll
+/home/hermes/Documentos/Desenvolvimento/DotnetCore/ProAgil.Api/bin/Debug/netcoreapp3.1/Microsoft.IdentityModel.JsonWebTokens.dll
+/home/hermes/Documentos/Desenvolvimento/DotnetCore/ProAgil.Api/bin/Debug/netcoreapp3.1/Microsoft.IdentityModel.Logging.dll
+/home/hermes/Documentos/Desenvolvimento/DotnetCore/ProAgil.Api/bin/Debug/netcoreapp3.1/Microsoft.IdentityModel.Protocols.dll
+/home/hermes/Documentos/Desenvolvimento/DotnetCore/ProAgil.Api/bin/Debug/netcoreapp3.1/Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
+/home/hermes/Documentos/Desenvolvimento/DotnetCore/ProAgil.Api/bin/Debug/netcoreapp3.1/Microsoft.IdentityModel.Tokens.dll
+/home/hermes/Documentos/Desenvolvimento/DotnetCore/ProAgil.Api/bin/Debug/netcoreapp3.1/System.IdentityModel.Tokens.Jwt.dll
