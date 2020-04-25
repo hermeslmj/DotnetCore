@@ -4,7 +4,7 @@
     <span class="navbar-toggler-icon"></span>
   </button>
 
-  <div class="collapse navbar-collapse" id="navbarsExampleDefault">
+  <div class="collapse navbar-collapse" id="navbarsExampleDefault" *ngIf="loggedIn()">
     <ul class="navbar-nav mr-auto">
       <li class="nav-item" routerLinkActive="active">
         <a class="nav-link" routerLink="eventos">Eventos<span class="sr-only">(current)</span></a>
@@ -19,21 +19,24 @@
     </ul>
     
   </div>
-  <ul class="navbar-nav">
+  <ul class="navbar-nav" *ngIf="loggedIn()">
     <li class="nav-item dropdown" dropdown>
-      <a dropdownToggle class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown"
+      <a dropdownToggle class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown"
         aria-haspopup="true" aria-expanded="false">
-        Hermes
+        {{authService.decodedToken?.unique_name}}
       </a>
       <div *dropdownMenu class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-        <a class="dropdown-item" href="#">
+        <a class="dropdown-item">
           Perfil
         </a>
         <div role="separator" class="divider"></div>
-        <a class="dropdown-item" href="#">
+        <a class="dropdown-item" (click)="loggOut()">
           Sair
         </a>
       </div>
+      
     </li>
+    
   </ul>
+  <button class="btn btn-success" *ngIf="!loggedIn()" (click)="entrar()">Entrar</button>
 </nav>
