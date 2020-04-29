@@ -23,7 +23,6 @@ export class EventosEditComponent implements OnInit {
   registerForm: FormGroup;
   evento : Evento = new Evento();
   imagemURL = "assets/img/download.jpeg";
-  dataEvento = "";
   fileNameToUpdate = "";
   file: File;
   

@@ -24,8 +24,11 @@ export class LoginComponent implements OnInit {
     , public router: Router) { }
 
   ngOnInit() {
-    if(localStorage.getItem('token') !== null){
+    if(localStorage.getItem('token') !== null && this.authService.loggedIn()){
       this.router.navigate(['/dashboard']);
+    }
+    else{
+      this.router.navigate(['/user/login']);
     }
   }
 
