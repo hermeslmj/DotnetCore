@@ -23,7 +23,7 @@
     "@fortawesome/fontawesome-free": "^5.13.0",
     "bootstrap": "^4.4.1",
     "bootswatch": "^4.4.1",
-    "jquery": "^3.4.1",
+    "jquery": "^3.5.0",
     "ngx-bootstrap": "^5.6.1",
     "ngx-currency": "^2.3.3",
     "ngx-mask": "^9.0.2",
